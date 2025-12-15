@@ -33,7 +33,7 @@ const About = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Location</p>
-                    <p className="font-medium">Available Worldwide</p>
+                    <p className="font-medium">India</p>
                   </div>
                 </div>
 

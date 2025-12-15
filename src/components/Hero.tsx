@@ -1,5 +1,7 @@
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const RESUME_URL = "https://drive.google.com/file/d/1bDgzDZq1nNMg8R7pKRel_SvexsREDSZ5/view?usp=drive_link";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -37,7 +39,7 @@ const Hero = () => {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Crafting modern web experiences with Angular, React, and Node.js
+              Building scalable, high-performance web applications with modern frontend and backend technologies.
             </p>
           </div>
 
@@ -58,6 +60,19 @@ const Hero = () => {
             >
               Contact Me
             </Button>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground glow-effect group"
+              >
+                <FileDown className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                Download Resume
+              </Button>
+            </a>
           </div>
 
           <div className="flex items-center justify-center gap-6 pt-8">
