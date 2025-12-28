@@ -1,4 +1,5 @@
 import { Github, Linkedin, Mail, Send, FileDown } from "lucide-react";
+import emailjs from "emailjs-com";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,7 +17,6 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Missing Information",
@@ -26,7 +26,6 @@ const Contact = () => {
       return;
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       toast({
@@ -37,14 +36,29 @@ const Contact = () => {
       return;
     }
 
-    // Success message
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
+    emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    ).then(() => {
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+      setFormData({ name: "", email: "", message: "" });
+    })
+      .catch(() => {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive",
+        });
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
