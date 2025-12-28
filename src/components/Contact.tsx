@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -75,6 +75,23 @@ const Contact = () => {
               </div>
 
               <div className="space-y-6">
+                <a
+                  href="https://drive.google.com/file/d/1bDgzDZq1nNMg8R7pKRel_SvexsREDSZ5/view?usp=drive_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors group-hover:glow-effect">
+                    <FileDown className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">Resume</p>
+                    <p className="font-medium group-hover:text-primary transition-colors">
+                      Download Resume (PDF)
+                    </p>
+                  </div>
+                </a>
+
                 <a
                   href="mailto:vamsidhar840@gmail.com"
                   className="flex items-center gap-4 group"

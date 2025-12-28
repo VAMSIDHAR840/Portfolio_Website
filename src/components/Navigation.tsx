@@ -1,4 +1,4 @@
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
@@ -68,18 +68,35 @@ const Navigation = () => {
             ))}
           </div>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleTheme}
-            className="hover:glow-effect transition-all"
-          >
-            {theme === "dark" ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
-          </Button>
+          <div className="flex items-center gap-2">
+            <a
+              href="https://drive.google.com/file/d/1bDgzDZq1nNMg8R7pKRel_SvexsREDSZ5/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex"
+            >
+              <Button
+                variant="outline"
+                size="sm"
+                className="border-primary/50 hover:bg-primary/10 hover:border-primary hover:glow-effect transition-all"
+              >
+                <FileDown className="mr-2 h-4 w-4" />
+                Resume
+              </Button>
+            </a>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="hover:glow-effect transition-all"
+            >
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </nav>
