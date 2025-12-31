@@ -39,7 +39,7 @@ const Hero = () => {
               </span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Building scalable, high-performance web applications with modern frontend and backend technologies.
+              Building scalable, high-performance web applications using Angular and modern frontend technologies, with hands-on experience in React and a strong enthusiasm to work on React-based projects.
             </p>
           </div>
 
@@ -61,9 +61,9 @@ const Hero = () => {
               Contact Me
             </Button>
             <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/Vamsidhar_Angular_Developer.pdf"
+              download
+              className="flex items-center gap-4 group"
             >
               <Button
                 size="lg"
@@ -102,9 +102,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ArrowDown className="h-6 w-6 text-primary" />
       </div>
     </section>
   );

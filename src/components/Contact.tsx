@@ -8,13 +8,21 @@ import { useState } from "react";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -36,36 +44,34 @@ const Contact = () => {
       return;
     }
 
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  
-      {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    ).then(() => {
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon!",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    })
+    setIsSending(true);
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        toast({
+          title: "Message Sent!",
+          description: "Thanks for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      })
       .catch(() => {
         toast({
           title: "Error",
           description: "Something went wrong. Please try again later.",
           variant: "destructive",
         });
-      });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+      })
+      .finally(() => setIsSending(false));
   };
 
   return (
@@ -75,49 +81,46 @@ const Contact = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
             Get In <span className="text-gradient">Touch</span>
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary mx-auto mb-12 rounded-full" />
+
+          <p className="text-center text-muted-foreground mb-10">
+            Let’s build something great together
+          </p>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
+            {/* LEFT: CONTACT INFO */}
+            <div className="space-y-8 order-2 md:order-1">
               <div>
-                <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
-                <p className="text-muted-foreground mb-8">
-                  I'm always open to discussing new projects, creative ideas, or opportunities to
-                  be part of your vision.
+                <h3 className="text-2xl font-semibold mb-4">Let's Connect</h3>
+                <p className="text-muted-foreground">
+                  I'm always open to discussing new projects, creative ideas,
+                  or opportunities to be part of your vision.
                 </p>
               </div>
 
               <div className="space-y-6">
                 <a
-                  href="https://drive.google.com/file/d/1bDgzDZq1nNMg8R7pKRel_SvexsREDSZ5/view?usp=drive_link"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/Vamsidhar_Angular_Developer.pdf"
+                  download
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors group-hover:glow-effect">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                     <FileDown className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Resume</p>
                     <p className="font-medium group-hover:text-primary transition-colors">
-                      Download Resume (PDF)
+                      View & Download Resume (PDF)
                     </p>
                   </div>
                 </a>
 
-                <a
-                  href="mailto:vamsidhar840@gmail.com"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors group-hover:glow-effect">
+                <a href="mailto:vamsidhar840@gmail.com" className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium group-hover:text-primary transition-colors">
-                      vamsidhar840@gmail.com
-                    </p>
+                    <p className="font-medium">vamsidhar840@gmail.com</p>
                   </div>
                 </a>
 
@@ -127,14 +130,12 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors group-hover:glow-effect">
+                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center">
                     <Linkedin className="h-5 w-5 text-secondary" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">LinkedIn</p>
-                    <p className="font-medium group-hover:text-secondary transition-colors">
-                      linkedin.com/in/vamsidhar840
-                    </p>
+                    <p className="font-medium">linkedin.com/in/vamsidhar840</p>
                   </div>
                 </a>
 
@@ -144,73 +145,59 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors group-hover:glow-effect">
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
                     <Github className="h-5 w-5 text-accent" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">GitHub</p>
-                    <p className="font-medium group-hover:text-accent transition-colors">
-                      github.com/vamsidhar840
-                    </p>
+                    <p className="font-medium">github.com/vamsidhar840</p>
                   </div>
                 </a>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="card-glass rounded-xl p-6">
+            <div className="card-glass rounded-xl p-6 order-1 md:order-2">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Your Name
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Your Name</label>
                   <Input
-                    id="name"
                     name="name"
-                    type="text"
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="bg-background/50"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Your Email
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Your Email</label>
                   <Input
-                    id="email"
                     name="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="Your email address"
                     value={formData.email}
                     onChange={handleChange}
-                    className="bg-background/50"
                   />
                 </div>
 
+
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message
-                  </label>
+                  <label className="block text-sm font-medium mb-2">Message</label>
                   <Textarea
-                    id="message"
                     name="message"
-                    placeholder="Your message here..."
+                    placeholder="Tell me about your idea or project..."
                     rows={5}
                     value={formData.message}
                     onChange={handleChange}
-                    className="bg-background/50 resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-effect"
+                  disabled={isSending}
+                  className="w-full bg-primary hover:bg-primary/90"
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  {isSending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </div>

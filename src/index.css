@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
+    --background: 0 0% 100%;
     --foreground: 220 30% 12%;
 
     --card: 0 0% 100%;
@@ -45,10 +45,19 @@ All colors MUST be HSL.
     --glass-bg: 220 20% 98%;
     --glass-border: 220 20% 92%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(200 95% 55%) 0%, hsl(270 70% 60%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(180 100% 50% / 0.15), transparent 70%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 35% 12%) 0%, hsl(200 40% 20%) 50%, hsl(270 35% 25%) 100%);
+
+    --gradient-primary: linear-gradient(135deg,
+        hsl(200 95% 60%) 0%,
+        hsl(260 80% 65%) 100%);
+
+    --gradient-glow: radial-gradient(circle at 50% 50%,
+        hsl(190 100% 60% / 0.25),
+        transparent 70%);
+
+    --gradient-hero: linear-gradient(135deg,
+        hsl(210 60% 96%) 0%,
+        hsl(220 50% 92%) 50%,
+        hsl(260 60% 90%) 100%);
   }
 
   .dark {
@@ -87,10 +96,20 @@ All colors MUST be HSL.
     --glass-bg: 220 25% 12%;
     --glass-border: 220 25% 22%;
 
-    /* Gradients for dark mode */
-    --gradient-primary: linear-gradient(135deg, hsl(200 95% 55%) 0%, hsl(270 70% 60%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(180 100% 50% / 0.2), transparent 70%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(200 35% 15%) 50%, hsl(270 30% 18%) 100%);
+
+
+    --gradient-primary: linear-gradient(135deg,
+        hsl(200 100% 60%) 0%,
+        hsl(270 85% 65%) 100%);
+
+    --gradient-glow: radial-gradient(circle at 50% 50%,
+        hsl(190 100% 55% / 0.22),
+        transparent 70%);
+
+    --gradient-hero: linear-gradient(135deg,
+        hsl(225 40% 9%) 0%,
+        hsl(210 45% 13%) 45%,
+        hsl(270 45% 17%) 100%);
   }
 }
 
@@ -117,7 +136,7 @@ All colors MUST be HSL.
 
   .glow-effect {
     box-shadow: 0 0 20px hsl(var(--primary) / 0.3),
-                0 0 40px hsl(var(--primary) / 0.2);
+      0 0 40px hsl(var(--primary) / 0.2);
   }
 
   .glow-text {
@@ -134,13 +153,27 @@ All colors MUST be HSL.
   }
 
   @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
   .animate-float {

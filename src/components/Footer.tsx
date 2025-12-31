@@ -9,7 +9,7 @@ const Footer = () => {
             Built with <Heart className="h-4 w-4 text-primary fill-primary" /> by Vamsidhar Reddy G
           </p>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} All rights reserved
+            © {new Date().getFullYear()} Vamsidhar Reddy G. All rights reserved.
           </p>
         </div>
       </div>

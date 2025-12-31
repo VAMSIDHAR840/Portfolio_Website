@@ -4,27 +4,61 @@ const skills = [
   {
     category: "Frontend",
     icon: Code2,
-    items: ["Angular", "React", "TypeScript", "JavaScript", "HTML", "CSS"],
+    items: [,
+      "Angular",
+      "React",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "RxJS",
+      "NgRx",
+      "Angular Signals",
+      "HTML5",
+      "CSS3 / SCSS",
+      "Bootstrap",
+      "Tailwind CSS",
+      "jQuery",
+      "Angular Material",
+      "Responsive Design",
+
+    ],
     color: "primary",
   },
+
   {
     category: "Backend",
     icon: Server,
-    items: ["Node.js", "Express.js", "RESTful APIs"],
+    items: [
+      "Node.js",
+      "Express.js",
+      "RESTful APIs",
+      "API Integration",
+      "Authentication (JWT)"
+    ],
     color: "secondary",
   },
   {
     category: "Database",
     icon: Database,
-    items: ["MongoDB", "Database Design", "Data Modeling"],
+    items: ["MongoDB", "SQL"],
     color: "accent",
   },
   {
     category: "Tools",
     icon: Wrench,
-    items: ["Git", "Postman", "VS Code", "npm"],
+    items: [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Postman",
+      "VS Code",
+      "NPM",
+      "Chrome DevTools",
+      "Jira"
+
+    ],
     color: "primary",
-  },
+  }
+
 ];
 
 const Skills = () => {
@@ -68,7 +102,6 @@ const Skills = () => {
             })}
           </div>
 
-          {/* Tech stack badges */}
           <div className="mt-12 flex flex-wrap justify-center gap-3">
             {[
               "Angular",

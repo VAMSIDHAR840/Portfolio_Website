@@ -1,0 +1,33 @@
+<svg
+  width="40"
+  height="40"
+  viewBox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="vGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="hsl(200 95% 60%)" />
+      <stop offset="100%" stop-color="hsl(260 80% 65%)" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded background -->
+  <rect
+    x="5"
+    y="5"
+    width="90"
+    height="90"
+    rx="18"
+    fill="url(#vGradient)"
+  />
+
+  <!-- V letter -->
+  <path
+    d="M30 28 L50 72 L70 28"
+    stroke="white"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+</svg>
